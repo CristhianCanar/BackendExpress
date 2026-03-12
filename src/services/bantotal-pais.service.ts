@@ -4,6 +4,7 @@ import {
   ObtenerPaisesResponse,
   ObtenerPaisesRequest
 } from "../models/obtener-paises";
+import { ObtenerEstadosByPaisRequest, ObtenerEstadosResponse } from "../models/obtener-estados-by-pais";
 
 
 const bantotalApi = axios.create({
@@ -34,19 +35,22 @@ export const obtenerPaisesBantotal = async (): Promise<ObtenerPaisesResponse> =>
   return response.data;
 };
 
-export const obtenerEstadosByPaisIdBantotal = async (): Promise<ObtenerPaisesResponse> => {
-  const body: ObtenerPaisesRequest = {
+export const obtenerEstadosByPaisIdBantotal = async ( pais: number): Promise<ObtenerEstadosResponse> => {
+  const body: ObtenerEstadosByPaisRequest = {
     Btinreq: {
       Device: "AV",
       Usuario: "INSTALADOR",
       Requerimiento: "",
       Canal: "BTDIGITAL",
       Token: env.BANTOTAL_TOKEN
-    }
+    },
+    pais
   };
 
-  const response = await bantotalApi.post<ObtenerPaisesResponse>(
-    "/com.dlya.bantotal.odwsbt_BTConfiguracionBantotal?ObtenerPaises=",
+  console.log("Request a Bantotal:", body);
+
+  const response = await bantotalApi.post<ObtenerEstadosResponse>(
+    "/com.dlya.bantotal.odwsbt_BTConfiguracionBantotal?ObtenerEstadosProvinciasDepartamentos=",
     body
   );
 

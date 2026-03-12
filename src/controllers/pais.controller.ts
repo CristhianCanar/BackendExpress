@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { obtenerPaisesBantotal } from "../services/bantotal-pais.service";
+import { obtenerEstadosByPaisIdBantotal, obtenerPaisesBantotal } from "../services/bantotal-pais.service";
 import { mapPaisesToDTO } from "../mappers/pais.mapper";
+import { mapEstadoToDTO } from "../mappers/estado.mapper";
 
 export const getPaises = async (
   _req: Request,
@@ -32,11 +33,13 @@ export const getEstadosbyPaisId = async (
 ) => {
   try {
 
-    const bantotalResp = await obtenerPaisesBantotal();
+    const idPais = Number(req.params.idPais);
 
-    const paisesDTO = mapPaisesToDTO(bantotalResp);
+    const bantotalResp = await obtenerEstadosByPaisIdBantotal(idPais);
 
-    res.json(paisesDTO)
+    const estadosDTO = mapEstadoToDTO(bantotalResp);
+
+    res.json(estadosDTO)
 
   } catch (error: any) {
     res.status(500).json({

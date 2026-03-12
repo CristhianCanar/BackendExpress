@@ -18,7 +18,3 @@ export interface ObtenerPaisesResponse {
   };
 }
 
-export interface SdtPaises {
-  sBTPais: BTPais[];
-}
-

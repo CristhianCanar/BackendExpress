@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getPaises } from "../controllers/pais.controller";
+import { getEstadosbyPaisId, getPaises } from "../controllers/pais.controller";
 
 const router = Router();
 
 router.get("", getPaises);
-router.get("/:idPais", getPaises);
+router.get("/estados/:idPais", getEstadosbyPaisId);
 /* router.get("/:idPais", getPersona); */
 
 export default router;
