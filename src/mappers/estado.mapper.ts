@@ -7,5 +7,13 @@ export const mapEstadoToDTO = (data: ObtenerEstadosResponse): EstadoDTO[] => {
     descripcion: estado.descripcion,
     identificador: estado.identificador,
   }))
+ /*  const estado = estados.find(e => e.identificador === 10); */
+
+ /*  return estado ? estado : undefined; */
+  /* return data.sdtEstados.sBTEstado.map((estado) => ({
+    descripcion: estado.descripcion,
+    identificador: estado.identificador,
+  })) */
+
 
 }

@@ -37,9 +37,11 @@ export const getEstadosbyPaisId = async (
 
     const bantotalResp = await obtenerEstadosByPaisIdBantotal(idPais);
 
-    const estadosDTO = mapEstadoToDTO(bantotalResp);
+    const estadoDTO = mapEstadoToDTO(bantotalResp);
+    //const estadosFiltrados = estadosDTO.filter(e => e.identificador === 10);
 
-    res.json(estadosDTO)
+    /* res.json(estadosDTO) */
+    res.json(estadoDTO);
 
   } catch (error: any) {
     res.status(500).json({
