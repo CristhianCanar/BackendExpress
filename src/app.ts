@@ -35,7 +35,7 @@ app.use(express.json());
 
 /* app.use("/api/clientes", clienteRoutes); */
 app.use("/api/paises", paisRoutes);
-app.use("/api/clientes", personaRoutes);
+app.use("/api/personas", personaRoutes);
 app.use("/api/auth", authRoutes);
 
 export default app;

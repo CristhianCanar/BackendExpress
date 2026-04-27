@@ -3,7 +3,7 @@ import { obtenerPersonaBantotal } from "../services/bantotal-persona.service";
 import { PersonaDTO } from "../models/persona.dto";
 
 interface Params {
-  idCliente: string; // viene por URL
+  idPersona: string; // viene por URL
 }
 
 export const getPersona = async (
@@ -11,15 +11,15 @@ export const getPersona = async (
   res: Response
 ) => {
   try {
-    const idCliente = Number(req.params.idCliente);
+    const idPersona = Number(req.params.idPersona);
 
-    const bantotalResp = await obtenerPersonaBantotal(idCliente);
+    const bantotalResp = await obtenerPersonaBantotal(idPersona);
 
     const p = bantotalResp.sdtPersona;
 
     // Mapper → Bantotal → Frontend Angular
     const persona: PersonaDTO = {
-      idCliente,
+      idPersona,
       nombreCompleto: `${p.primerNombre.trim()} ${p.segundoNombre.trim()} ${p.primerApellido.trim()} ${p.segundoApellido.trim()}`.replace(/\s+/g, " "),
       documento: p.nroDocumento.trim(),
       correo: p.correoElectronico,

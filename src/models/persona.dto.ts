@@ -1,5 +1,5 @@
 export interface PersonaDTO {
-  idCliente: number;
+  idPersona: number;
   nombreCompleto: string;
   documento: string;
   correo: string;

@@ -4,6 +4,6 @@ import { getPersona } from "../controllers/persona.controller";
 const router = Router();
 
 // GET /api/personas/181
-router.get("/:idCliente", getPersona);
+router.get("/:idPersona", getPersona);
 
 export default router;
